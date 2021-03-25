@@ -13,7 +13,7 @@ var con = mysql.createConnection({
 con.connect(function(err) {
     if (err) throw err;
     console.log("Connected!");
-    var sql = "CREATE DATABASE mydb";
+    var sql = "CREATE TABLE users(name VARCHAR(255), id int)";
     con.query(sql, function (err, result) {
       if (err) throw err;
       console.log("Table created");
