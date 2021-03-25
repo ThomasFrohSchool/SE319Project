@@ -5,8 +5,9 @@ var mysql = require('mysql');
 
 var con = mysql.createConnection({
     host:"localhost",
-    user: "team1",
-    password: "team1comsVM@319"
+    user: "root",
+    password: "07aaa7b7ad12ca54",
+    database: "mydb"
 });
 
 con.connect(function(err) {
@@ -18,3 +19,7 @@ con.connect(function(err) {
       console.log("Table created");
     });
 });
+
+//sudo /usr/local/bin/isu_mysql_initialize
+//root
+//07aaa7b7ad12ca54
