@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const app = express(),
     bodyParser = require("body-parser");
     port = 3080;
@@ -6,6 +7,7 @@ const app = express(),
 const users = [];
 
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, '../next-app/out')));
 
 app.get('/api/users', (req, res) => {
     console.log('api/users called')
@@ -20,7 +22,7 @@ app.post('/api/user', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-    res.send('App works');
+    res.sendFile(path.join(__dirname, '../next-app/out/index.html'));
 });
 
 app.listen(port, () => {

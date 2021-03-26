@@ -4,10 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "start:dev": "NODE_ENV='development' node server.js",
+    "build": "next build && next export",
     "start": "next start"
   },
   "dependencies": {
+    "http-proxy-middleware": "^1.0.6",
     "next": "10.0.9",
     "nextjs": "0.0.3",
     "react": "^17.0.2",
