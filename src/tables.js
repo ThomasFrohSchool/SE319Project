@@ -18,8 +18,12 @@ con.connect(function(err) {
       "datemade DATETIME, "+ 
       "password VARCHAR(255), "+
       "profilepic VARCHAR(255), " +
-      "PRIMARY KEY (uname));\n "+
-      "CREATE TABLE stats( "+
+      "PRIMARY KEY (uname));\n ";
+    con.query(sql, function (err, result) {
+      if (err) throw err;
+      console.log("Table created");
+    });
+    sql ="CREATE TABLE stats( "+
       "username VARCHAR(20), "+
       "elo INT, "+
       "numWins INT, "+
