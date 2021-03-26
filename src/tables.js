@@ -21,13 +21,13 @@ con.connect(function(err) {
       "PRIMARY KEY (uname));\n "+
       "CREATE TABLE stats( "+
       "username VARCHAR(20), "+
-      "elo int, "+
-      "numWins int, "+
+      "elo INT, "+
+      "numWins INT, "+
       "winRatio FLOAT(7,5), "+
-      "numGames int, "+
-      "numGamesOnWhite int, " +
-      "numOfPiecesTaken int, " +
-      "numOfBlunders int, "+
+      "numGames INT, "+
+      "numGamesOnWhite INT, " +
+      "numOfPiecesTaken INT, " +
+      "numOfBlunders INT, "+
       "FOREIGN KEY (username) REFERENCES users(uname), " +
       "PRIMARY KEY (username));\n ";
     con.query(sql, function (err, result) {
