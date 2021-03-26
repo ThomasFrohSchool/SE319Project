@@ -17,7 +17,7 @@ con.connect(function(err) {
       "uname VARCHAR(20), "+ 
       "datemade DATETIME, "+ 
       "password VARCHAR(255), "+
-      "profilepic VARCHAR(255), "
+      "profilepic VARCHAR(255), " +
       "PRIMARY KEY (uname));\n "+
       "CREATE TABLE stats( "+
       "uname VARCHAR(20), "+
