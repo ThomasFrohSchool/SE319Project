@@ -13,6 +13,7 @@ export default function Home() {
       <main className={styles.main}>
         <p>This is the Main Page. Dunno what it does yet.</p>
         <Link href="/login"><a>Login</a></Link>
+        <Link href="/register"><a>register</a></Link>
       </main>
 
     </div>
