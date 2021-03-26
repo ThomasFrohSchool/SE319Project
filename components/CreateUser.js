@@ -24,7 +24,7 @@ const CreateUser = ({onChangeForm, createUser }) => {
                             <input type="text" onChange={(e) => onChangeForm(e)} className="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Email" />
                         </div>
                     </div>
-                    <button type="button" onClick= {(e) => createUser()} className="btn btn-danger">Create</button>
+                    <button type="button" onClick= {(e) => createUser()} className="btn btn-danger">Register</button>
                 </form>
                 </div>
             </div>
