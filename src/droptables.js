@@ -13,16 +13,17 @@ var con = mysql.createConnection({
 con.connect(function(err) {
     if (err) throw err;
     console.log("Connected!");
-    var sql = "DROP TABLE users;";
-    con.query(sql, function (err, result) {
-      if (err) throw err;
-      console.log("Table created");
-    });
     sql = "DROP TABLE stats;";
     con.query(sql, function (err, result) {
       if (err) throw err;
-      console.log("Table created");
+      console.log("Table Dropped");
     });
+    var sql = "DROP TABLE users;";
+    con.query(sql, function (err, result) {
+      if (err) throw err;
+      console.log("Table Dropped");
+    });
+    
 });
 
 
