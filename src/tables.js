@@ -9,7 +9,7 @@ var con = mysql.createConnection({
     password: "07aaa7b7ad12ca54",
     database: "mydb"
 });
-// creating tables do >"node tables.js" once cd'ed into the src folder
+// creating tables do >"node  tables.js" once cd'ed into the src folder
 con.connect(function(err) {
     if (err) throw err;
     console.log("Connected!");
@@ -23,7 +23,7 @@ con.connect(function(err) {
       "uname VARCHAR(20),"+
       "elo int,"+
       "numWins int,"+
-      "winRatio long, "+
+      "winRatio float, "+
       "numGames int, "+
       "numGamesOnWhite int," +
       "numOfPiecesTaken int, +"
