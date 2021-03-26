@@ -23,7 +23,7 @@ app.prepare().then(() => {
   const server = express()
  
   if (isDevelopment) {
-    server.use('/pages/api', createProxyMiddleware(apiPaths['/pages/api']));
+    server.use('/api', createProxyMiddleware(apiPaths['/api']));
   }
 
   server.all('*', (req, res) => {
