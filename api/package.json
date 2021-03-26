@@ -1,0 +1,16 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "node holds all of the api calls",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.linux.iastate.edu/spring2021-cs319-projects/g10.git"
+  },
+  "author": "",
+  "license": "ISC"
+}
