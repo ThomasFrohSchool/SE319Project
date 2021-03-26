@@ -27,8 +27,8 @@ con.connect(function(err) {
       "numGames int, "+
       "numGamesOnWhite int, " +
       "numOfPiecesTaken int, " +
-      "numOfBlunders int,"+
-      "FOREIGN KEY(uname) REFRENCES users(uname));\n ";
+      "numOfBlunders int, "+
+      "FOREIGN KEY(uname) REFERENCES users(uname));\n ";
     con.query(sql, function (err, result) {
       if (err) throw err;
       console.log("Table created");
