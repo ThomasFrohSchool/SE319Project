@@ -20,15 +20,16 @@ con.connect(function(err) {
       "profilepic VARCHAR(255), " +
       "PRIMARY KEY (uname));\n "+
       "CREATE TABLE stats( "+
-      "uname VARCHAR(20), "+
+      "username VARCHAR(20), "+
       "elo int, "+
       "numWins int, "+
-      "winRatio float, "+
+      "winRatio FLOAT(7,5), "+
       "numGames int, "+
       "numGamesOnWhite int, " +
       "numOfPiecesTaken int, " +
       "numOfBlunders int, "+
-      "FOREIGN KEY(uname) REFERENCES users(uname));\n ";
+      "FOREIGN KEY (username) REFERENCES users(uname), " +
+      "PRIMARY KEY (username));\n ";
     con.query(sql, function (err, result) {
       if (err) throw err;
       console.log("Table created");
