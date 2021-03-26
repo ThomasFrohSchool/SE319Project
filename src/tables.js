@@ -9,7 +9,7 @@ var con = mysql.createConnection({
     password: "07aaa7b7ad12ca54",
     database: "mydb"
 });
-
+// creating tables do >"node tables.js" once cd'ed into the src folder
 con.connect(function(err) {
     if (err) throw err;
     console.log("Connected!");
@@ -18,7 +18,7 @@ con.connect(function(err) {
       "datemade DATETIME,"+ 
       "password VARCHAR(255),"+
       "profilepic VARCHAR(255),"
-      "PRIMARY KEY (uname))"+
+      "PRIMARY KEY (uname));\n"+
       "CREATE TABLE stats("+
       "uname VARCHAR(20),"+
       "elo int,"+
@@ -28,7 +28,7 @@ con.connect(function(err) {
       "numGamesOnWhite int," +
       "numOfPiecesTaken int, +"
       "numOfBlunders int,"+
-      "FOREIGN KEY(uname) REFRENCES users(uname))";
+      "FOREIGN KEY(uname) REFRENCES users(uname));\n";
     con.query(sql, function (err, result) {
       if (err) throw err;
       console.log("Table created");
@@ -37,4 +37,4 @@ con.connect(function(err) {
 
 //sudo /usr/local/bin/isu_mysql_initialize
 //root
-//07aaa7b7ad12ca54
+//07aaa7b7ad12ca54PRIMARY KEY 
