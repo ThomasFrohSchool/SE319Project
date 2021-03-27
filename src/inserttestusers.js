@@ -22,15 +22,15 @@ con.connect(function(err) {
     if (day.length == 1) {
         day = "0" + day;
     }
-    hours = String(currentdate.getHours);
+    hours = String(currentdate.getHours());
     if (hours.length == 1) {
         hours = "0" + month;
     }
-    minutes = String(currentdate.getMinutes);
+    minutes = String(currentdate.getMinutes());
     if (minutes.length == 1) {
         minutes = "0" + day;
     }
-    seconds = String(currentdate.getSeconds);
+    seconds = String(currentdate.getSeconds());
     if(seconds.length ==1){
         seconds = "0"+seconds;
     }
