@@ -43,7 +43,7 @@ function newUser(username, first, last, email, password){
                         + minutes + ":" 
                         + seconds;
         sql = "INSERT INTO users(uname, first, last, email, datemade, password, profilepic)\n" + 
-        "VALUES("+ username + "," + first + "," + last + "," + email +"," + datetime + "," + password + "," + "default" +")";
+        "VALUES("+ username + "," + first + "," + last + "," + email +", " + datetime + "," + password + "," + "default" +")";
         con.query(sql, function (err, result) {
         if (err) throw err;
         console.log("User inserted");

@@ -43,10 +43,10 @@ con.connect(function(err) {
                     + seconds;
 
     sql = "INSERT INTO users(uname, first, last, email, datemade, password, profilepic)\n" + 
-    "VALUES(testuser1, test2, user, test1@user.com," +datetime+", password, default),\n"+
-    "(testuser2, test2, user, test2@user.com," +datetime+", password, default),\n"+
-    "(testuser3, test3, user, test3@user.com," +datetime+", password, default),\n"+
-    "(zDoda, Camdyn, Zook, czook@iastate.edu," +datetime+", hehexd69, default);";
+    "VALUES('testuser1', 'test1', 'user', 'test1@user.com', '" +datetime+"', 'password', 'default'),\n"+
+    "('testuser2', 'test2', 'user', 'test2@user.com', '" +datetime+"', 'password', 'default'),\n" +
+    "('testuser3', 'test3', 'user', 'test3@user.com', '" +datetime+"', 'password', 'default'),\n" +
+    "('zDoda', 'Camdyn', 'Zook', 'czook@iastate.edu', '" +datetime+"', 'hehexd69', 'default');";
     con.query(sql, function (err, result) {
     if (err) throw err;
     console.log("table inserted");
