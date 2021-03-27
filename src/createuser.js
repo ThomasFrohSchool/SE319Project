@@ -14,37 +14,36 @@ function newUser(username, first, last, email, password){
         console.log("Connected!");
         var currentdate = new Date();
         Date.prototype.toYMD = Date_toYMD;
-        function Date_toYMD() {
-            var year, month, day, hours, minutes, seconds;
-            year = String(currentdate.getFullYear());
-            month = String(currentdate.getMonth() + 1);
-            if (month.length == 1) {
-                month = "0" + month;
-            }
-            day = String(currentdate.getDate());
-            if (day.length == 1) {
-                day = "0" + day;
-            }
-            hours = String(currentdate.getHours);
-            if (hours.length == 1) {
-                hours = "0" + month;
-            }
-            minutes = String(currentdate.getMinutes);
-            if (minutes.length == 1) {
-                minutes = "0" + day;
-            }
-            seconds = String(currentdate.getSeconds);
-            if(seconds.length ==1){
-                seconds = "0"+seconds;
-            }
-            
+        
+        var year, month, day, hours, minutes, seconds;
+        year = String(currentdate.getFullYear());
+        month = String(currentdate.getMonth() + 1);
+        if (month.length == 1) {
+            month = "0" + month;
         }
-        var datetime = ""+currentdate.getFullYear() + "-"
-                        + (currentdate.getMonth()+1)  + "-" 
-                        + currentdate.getDate() + " "
-                        + currentdate.getHours() + ":"  
-                        + currentdate.getMinutes() + ":" 
-                        + currentdate.getSeconds();
+        day = String(currentdate.getDate());
+        if (day.length == 1) {
+            day = "0" + day;
+        }
+        hours = String(currentdate.getHours);
+        if (hours.length == 1) {
+            hours = "0" + month;
+        }
+        minutes = String(currentdate.getMinutes);
+        if (minutes.length == 1) {
+            minutes = "0" + day;
+        }
+        seconds = String(currentdate.getSeconds);
+        if(seconds.length ==1){
+            seconds = "0"+seconds;
+        }
+
+        var datetime = ""+ year + "-"
+                        + month  + "-" 
+                        + day + " "
+                        + hours + ":"  
+                        + minutes + ":" 
+                        + seconds;
         sql = "INSERT INTO users(uname, first, last, email, datemade, password, profilepic)\n" + 
         "VALUES("+ username + "," + first + "," + last + "," + email +"," + datetime + "," + password + "," + "default" +")";
         con.query(sql, function (err, result) {
