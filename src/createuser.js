@@ -23,7 +23,7 @@ function newUser(username, first, last, email, password){
         "VALUES("+ username + "," + first + "," + last + "," + email +"," + datetime + "," + password + "," + "default" +")";
         con.query(sql, function (err, result) {
         if (err) throw err;
-        console.log("Table Dropped");
+        console.log("User inserted");
         });
     });
 }
