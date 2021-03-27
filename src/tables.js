@@ -14,7 +14,10 @@ con.connect(function(err) {
     if (err) throw err;
     console.log("Connected!");
     var sql = "CREATE TABLE users( "+
-      "uname VARCHAR(20), "+ 
+      "uname VARCHAR(20), "+
+      "first VARCHAR(30),"+ 
+      "last VARCHAR(30),"+ 
+      "email VARCHAR(255),"+ 
       "datemade DATETIME, "+ 
       "password VARCHAR(255), "+
       "profilepic VARCHAR(255), " +
