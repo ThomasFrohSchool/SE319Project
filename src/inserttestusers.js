@@ -24,11 +24,11 @@ con.connect(function(err) {
     }
     hours = String(currentdate.getHours());
     if (hours.length == 1) {
-        hours = "0" + month;
+        hours = "0" + hours;
     }
     minutes = String(currentdate.getMinutes());
     if (minutes.length == 1) {
-        minutes = "0" + day;
+        minutes = "0" + minutes;
     }
     seconds = String(currentdate.getSeconds());
     if(seconds.length ==1){

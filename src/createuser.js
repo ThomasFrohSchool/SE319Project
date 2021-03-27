@@ -13,8 +13,6 @@ function newUser(username, first, last, email, password){
         if (err) throw err;
         console.log("Connected!");
         var currentdate = new Date();
-        Date.prototype.toYMD = Date_toYMD;
-        
         var year, month, day, hours, minutes, seconds;
         year = String(currentdate.getFullYear());
         month = String(currentdate.getMonth() + 1);
@@ -25,15 +23,15 @@ function newUser(username, first, last, email, password){
         if (day.length == 1) {
             day = "0" + day;
         }
-        hours = String(currentdate.getHours);
+        hours = String(currentdate.getHours());
         if (hours.length == 1) {
-            hours = "0" + month;
+            hours = "0" + hours;
         }
-        minutes = String(currentdate.getMinutes);
+        minutes = String(currentdate.getMinutes());
         if (minutes.length == 1) {
-            minutes = "0" + day;
+            minutes = "0" + minutes;
         }
-        seconds = String(currentdate.getSeconds);
+        seconds = String(currentdate.getSeconds());
         if(seconds.length ==1){
             seconds = "0"+seconds;
         }
