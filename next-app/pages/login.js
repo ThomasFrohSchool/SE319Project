@@ -10,10 +10,6 @@ export default function Login() {
                 <link rel="icon" href="/logo.png" />
             </Head>
             <main className={styles.main}>
-<<<<<<< HEAD:next-app/pages/login.js
-            <Link href="/"><a>Register</a></Link>
-=======
->>>>>>> main:pages/login.js
                 <div className={styles.body}>
                     <fieldset className={styles.login_form}>
                         <legend className={styles.login_form_label}>Login</legend>
