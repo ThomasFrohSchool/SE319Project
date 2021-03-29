@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 //import { DisplayBoard } from './components/DisplayBoard'
 import CreateUser from '../components/CreateUser'
 import { getAllUsers, createUser } from '../services/UserService'
+import styles from "../styles/login_styles.module.css"
 
 /**
  * WILL UPDATE. THIS IS CURRENTLY ONLY REACT, BUT WE WANT TO CHANGE THIS TO NEXT.JS
@@ -49,9 +50,13 @@ class Register extends Component {
   render() {
     
     return (
+<<<<<<< HEAD:next-app/pages/register.js
       <div className="Register">
+=======
+      <main className={styles.main}>
+>>>>>>> main:pages/register.js
         {/*<Header></Header>*/}
-        <div className="container mrgnbtm">
+        <div className={styles.body_register}>
           <div className="row">
             <div className="col-md-8">
                 <CreateUser 
@@ -73,7 +78,7 @@ class Register extends Component {
         {/*<div className="row mrgnbtm">
           <Users users={this.state.users}></Users>
             </div>*/}
-      </div>
+      </main>
     );
   }
 }
