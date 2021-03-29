@@ -10,7 +10,6 @@ export default function Login() {
                 <link rel="icon" href="/logo.png" />
             </Head>
             <main className={styles.main}>
-            <Link href="/index"><a>Register</a></Link>
                 <div className={styles.body}>
                     <fieldset className={styles.login_form}>
                         <legend className={styles.login_form_label}>Login</legend>
@@ -26,7 +25,7 @@ export default function Login() {
                                 </tr>
                             </table>
                             <div className={styles.button_format}>
-                                <input type="button" value="Register"  className={styles.login_button}/>
+                                <Link href="/register"><a><input type="button" value="Register"  className={styles.login_button}/></a></Link>
                                 <input type="submit" value="Login"  className={styles.login_button}/>
                             </div>
                         </form>

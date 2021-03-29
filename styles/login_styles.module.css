@@ -21,6 +21,14 @@
     margin-left: -12.5em;
 }
 
+.body_register {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -11.5em;
+    margin-left: -12.5em;
+}
+
 .input_field {
     background-color: #24244F;
     border: 1px solid #858BA3;
@@ -32,6 +40,14 @@
 
 .login_form {
     height: 14em;
+    width: 25em;
+    border: 2px solid #858BA3;
+    border-radius: 10px;
+    background-color: #2e2e64;
+}
+
+.register_form {
+    height: 23em;
     width: 25em;
     border: 2px solid #858BA3;
     border-radius: 10px;
@@ -66,7 +82,7 @@
 }
 
 .table_form .table_label {
-    text-align: right;
+    text-align: center;
     padding: 10px 0px 10px 0px;
 }
 
