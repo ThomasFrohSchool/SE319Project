@@ -50,11 +50,7 @@ class Register extends Component {
   render() {
     
     return (
-<<<<<<< HEAD:next-app/pages/register.js
-      <div className="Register">
-=======
       <main className={styles.main}>
->>>>>>> main:pages/register.js
         {/*<Header></Header>*/}
         <div className={styles.body_register}>
           <div className="row">
