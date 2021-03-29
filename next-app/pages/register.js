@@ -10,7 +10,7 @@ import { getAllUsers, createUser } from '../services/UserService'
 /**
  * WILL UPDATE. THIS IS CURRENTLY ONLY REACT, BUT WE WANT TO CHANGE THIS TO NEXT.JS
  */
-class App extends Component {
+class Register extends Component {
 
   state = {
     user: {},
@@ -49,7 +49,7 @@ class App extends Component {
   render() {
     
     return (
-      <div className="App">
+      <div className="Register">
         {/*<Header></Header>*/}
         <div className="container mrgnbtm">
           <div className="row">
@@ -78,4 +78,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Register;
