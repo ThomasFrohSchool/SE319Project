@@ -1,10 +1,18 @@
 const express = require('express');
 const path = require('path');
+const mysql = require("mysql");
 const app = express(),
     bodyParser = require("body-parser");
     port = 3080;
 
 const users = [];
+
+const db = mysql.createConnection({
+    user: "root",
+    host: "localhost",
+    password: "07aaa7b7ad12ca54",
+    database: "mydb",
+});
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../next-app/out')));
@@ -17,6 +25,58 @@ app.get('/api/users', (req, res) => {
 app.post('/api/user', (req, res) => {
     const user = req.body.user;
     console.log('Adding user:::::::', user);
+    //console.log(req);
+    /*db.query("INSERT INTO users (uname, password) VALUES (?,?)", 
+    [username, password], 
+    (err, result) => {
+        console.log(err);
+    });*/
+    var con = mysql.createConnection({
+        host:"localhost",
+        user: "root",
+        password: "07aaa7b7ad12ca54",
+        database: "mydb"
+    });
+    con.connect(function(err) {
+        if (err) throw err;
+        console.log("Connected!");
+        var currentdate = new Date();
+        var year, month, day, hours, minutes, seconds;
+        year = String(currentdate.getFullYear());
+        month = String(currentdate.getMonth() + 1);
+        if (month.length == 1) {
+            month = "0" + month;
+        }
+        day = String(currentdate.getDate());
+        if (day.length == 1) {
+            day = "0" + day;
+        }
+        hours = String(currentdate.getHours());
+        if (hours.length == 1) {
+            hours = "0" + hours;
+        }
+        minutes = String(currentdate.getMinutes());
+        if (minutes.length == 1) {
+            minutes = "0" + minutes;
+        }
+        seconds = String(currentdate.getSeconds());
+        if(seconds.length ==1){
+            seconds = "0"+seconds;
+        }
+
+        var datetime = ""+ year + "-"
+                        + month  + "-" 
+                        + day + " "
+                        + hours + ":"  
+                        + minutes + ":" 
+                        + seconds;
+        sql = "INSERT INTO users(uname, first, last, email, datemade, password, profilepic)\n" + 
+        "VALUES("+ user + "," + user.firstName + "," + user.lastName + "," + user.email +", " + datetime + "," + user.password + "," + "default" +")";
+        con.query(sql, function (err, result) {
+        if (err) throw err;
+        console.log("User inserted");
+        });
+    });
     users.push(user);
     res.json("user added");
 });
