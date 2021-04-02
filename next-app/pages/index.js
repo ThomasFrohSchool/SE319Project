@@ -4,7 +4,6 @@ import NavBar from '../components/NavBar'
 
 export default function Home() {
     return (
-
         <body style={{ background: '#4d1d91' }}>
             <div className={styles.container}>
                 <Head>

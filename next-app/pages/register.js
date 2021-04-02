@@ -12,7 +12,7 @@ import NavBar from "../components/NavBar"
 /**
  * WILL UPDATE. THIS IS CURRENTLY ONLY REACT, BUT WE WANT TO CHANGE THIS TO NEXT.JS
  */
-class App extends Component {
+class Register extends Component {
 
   state = {
     user: {},
@@ -81,4 +81,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Register;

@@ -11,7 +11,7 @@ const apiPaths = {
     '/api': {
         target: 'http://localhost:3080', 
         pathRewrite: {
-            '^/pages/api': '/pages/api'
+            '^/api': '/api'
         },
         changeOrigin: true
     }
@@ -23,7 +23,7 @@ app.prepare().then(() => {
   const server = express()
  
   if (isDevelopment) {
-    server.use('/pages/api', createProxyMiddleware(apiPaths['/pages/api']));
+    server.use('/api', createProxyMiddleware(apiPaths['/api']));
   }
 
   server.all('*', (req, res) => {
