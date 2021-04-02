@@ -7,6 +7,9 @@ import React, { Component } from 'react';
 import CreateUser from '../components/CreateUser'
 import { getAllUsers, createUser } from '../services/UserService'
 import styles from "../styles/login_styles.module.css"
+import NavBar from "../components/NavBar"
+import Router from "next/router"
+import {Cookies} from "react-cookie"
 
 /**
  * WILL UPDATE. THIS IS CURRENTLY ONLY REACT, BUT WE WANT TO CHANGE THIS TO NEXT.JS
@@ -49,10 +52,18 @@ class Register extends Component {
       this.setState({user})
   }
 
+  componentDidMount() {
+    var cookies = new Cookies()
+      if (cookies.get("user")) {
+        Router.push("/");
+    }
+  }
+
   render() {
     
     return (
       <main className={styles.main}>
+        <NavBar />
         {/*<Header></Header>*/}
         <div className={styles.body_register}>
           <div className="row">

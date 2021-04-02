@@ -1,0 +1,36 @@
+.bar {
+    top: 0;
+    padding: 5px 2em;
+    margin: 0;
+    margin-bottom: 10px;
+    display: flex;
+    width: 100%;
+    background-color: inherit;
+    align-content: right;
+    height: 3em;
+}
+
+.button {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #827F9D;
+    color: #FBFAFA;
+    padding: .25em .5em;
+    font-size: 1.2em;
+    margin-right: 1em;
+    float: right;
+}
+
+.button_bar {
+    width: 100%;
+}
+
+.user_text {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    text-align: right;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-size: 2em;
+    color: #FBFAFA;
+}
