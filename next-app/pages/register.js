@@ -49,6 +49,9 @@ class Register extends Component {
       } else if (e.target.name === 'username'){
           user.username = e.target.value;
       }
+      else if(e.target.name === 'password') {
+        user.password = e.target.value;
+      }
       this.setState({user})
   }
 

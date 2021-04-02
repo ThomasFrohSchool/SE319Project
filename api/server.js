@@ -1,20 +1,14 @@
 const express = require('express');
 const path = require('path');
 const mysql = require("mysql");
+const createuser = require("./src/createuser");
 const app = express(),
-    bodyParser = require("body-parser");
+    //bodyParser = require("body-parser");
     port = 3080;
 
 const users = [];
 
-const db = mysql.createConnection({
-    user: "root",
-    host: "localhost",
-    password: "07aaa7b7ad12ca54",
-    database: "mydb",
-});
-
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(express.static(path.join(__dirname, '../next-app/out')));
 
 app.get('/api/users', (req, res) => {
@@ -23,16 +17,15 @@ app.get('/api/users', (req, res) => {
 });
 
 app.post('/api/user', (req, res) => {
-    const user = req.body.user;
+    var j = JSON.stringify(req.body);
+    //console.log(j);
+    const user = JSON.parse(j);
     console.log('Adding user:::::::', user);
-    //console.log(req);
-    /*db.query("INSERT INTO users (uname, password) VALUES (?,?)", 
-    [username, password], 
-    (err, result) => {
-        console.log(err);
-    });*/
+
+    //createuser.newUser(user.user.username, user.user.firstName, user.user.lastName, user.user.email, user.user.password);
+
     var con = mysql.createConnection({
-        host:"localhost",
+        host:"coms-319-g10.cs.iastate.edu",
         user: "root",
         password: "07aaa7b7ad12ca54",
         database: "mydb"
@@ -71,7 +64,7 @@ app.post('/api/user', (req, res) => {
                         + minutes + ":" 
                         + seconds;
         sql = "INSERT INTO users(uname, first, last, email, datemade, password, profilepic)\n" + 
-        "VALUES("+ user + "," + user.firstName + "," + user.lastName + "," + user.email +", " + datetime + "," + user.password + "," + "default" +")";
+        "VALUES("+ "'" + user.user.username + "'" + ", " + "'" + user.user.firstName + "'" + ", " + "'" + user.user.lastName + "'" + ", " + "'" + user.user.email + "'" + ", " + "'" + datetime + "'" + ", " + "'" + user.user.password + "'" + ", " + "default" +")";
         con.query(sql, function (err, result) {
         if (err) throw err;
         console.log("User inserted");
@@ -91,7 +84,6 @@ app.listen(port, () => {
 
 
 /*const express = require("express");
-const mysql = require("mysql");
 const rs = require("readline-sync");
 
 var u = rs.question("What is your username? ");
@@ -124,26 +116,3 @@ function login(user, pw) {
 }
 
 login(u, p);*/
-
-/*
-const app = express();
-
-app.use(express.json());
-
-const db = mysql.createConnection({
-    user: "root",
-    host: "coms-319-g10.cs.iastate.edu",
-    password: "07aaa7b7ad12ca54",
-    database: "users",
-});
-
-app.post('/users', (req, res)=> {
-
-    db.query("INSERT INTO users (username, password) VALUES (?,?)", [username, password], (err, result)=> {
-        console.log(err);
-    });
-});
-
-app.listen(3001, () => {
-    console.log("running server");
-});*/
