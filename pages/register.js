@@ -7,6 +7,7 @@ import React, { Component } from 'react';
 import CreateUser from '../components/CreateUser'
 import { getAllUsers, createUser } from '../services/UserService'
 import styles from "../styles/login_styles.module.css"
+import NavBar from "../components/NavBar"
 
 /**
  * WILL UPDATE. THIS IS CURRENTLY ONLY REACT, BUT WE WANT TO CHANGE THIS TO NEXT.JS
@@ -51,6 +52,7 @@ class App extends Component {
     
     return (
       <main className={styles.main}>
+        <NavBar />
         {/*<Header></Header>*/}
         <div className={styles.body_register}>
           <div className="row">

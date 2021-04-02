@@ -1,21 +1,51 @@
 import Head from 'next/head'
-import Link from "next/link"
 import styles from '../styles/Home.module.css'
+import NavBar from '../components/NavBar'
 
 export default function Home() {
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>Chess 2</title>
-        <link rel="icon" href="/logo.png" />
-      </Head>
+    return (
 
-      <main className={styles.main}>
-        <p>This is the Main Page. Dunno what it does yet.</p>
-        <Link href="/login"><a>Login</a></Link>
-        <Link href="/register"><a>register</a></Link>
-      </main>
+        <body style={{ background: '#4d1d91' }}>
+            <div className={styles.container}>
+                <Head>
 
-    </div>
-  )
+                    <title>Create Next App</title>
+                    <link rel="icon" href="/favicon.ico" />
+                </Head>
+                <main>
+                    <NavBar />
+                    <img
+                        src="/Chess2.png"
+                        width={250}
+                        height={250}>
+                    </img>
+                    <b className={styles.title}>
+                        Chess 2
+                        <p className={styles.description}> Chess with a twist. </p>
+                    </b>
+
+
+                    <div className={styles.grid}>
+                        <a href="https://nextjs.org/docs" className={styles.card}>
+                            <h3>Profile &rarr;</h3>
+                            <p>Cick here to access your profile information.</p>
+                        </a>
+
+                        <a href="https://nextjs.org/learn" className={styles.card}>
+                            <h3>Chess &rarr;</h3>
+                            <p>Click here to play chess.</p>
+                        </a>
+
+                        <a
+                            href="https://github.com/vercel/next.js/tree/master/examples"
+                            className={styles.card}
+                        >
+                            <h3>Chess 2 &rarr;</h3>
+                            <p>Click here to play chess with customisable features and additions. </p>
+                        </a>
+                    </div>
+                </main>
+            </div>
+        </body>
+    )
 }
