@@ -31,6 +31,10 @@ const CreateUser = ({onChangeForm, createUser }) => {
                 <form>
                     <form>
                         <table className={styles.table_form}>
+                        <tr className={styles.table_row}>
+                                <td className={styles.table_label}><label htmlFor="exampleInputEmail1">Username</label></td>
+                                <td className={styles.table_entry}><input type="text" onChange={(e) => onChangeForm(e)}  className={styles.input_field} name="username" id="username" aria-describedby="emailHelp" placeholder="Username" /></td>
+                            </tr>
                             <tr className={styles.table_row}>
                                 <td className={styles.table_label}><label htmlFor="exampleInputEmail1">First Name</label></td>
                                 <td className={styles.table_entry}><input type="text" onChange={(e) => onChangeForm(e)}  className={styles.input_field} name="firstname" id="firstname" aria-describedby="emailHelp" placeholder="First Name" /></td>
@@ -42,6 +46,10 @@ const CreateUser = ({onChangeForm, createUser }) => {
                             <tr>
                                 <td className={styles.table_label}><label htmlFor="exampleInputEmail1">Email</label></td>
                                 <td className={styles.table_entry}><input type="text" onChange={(e) => onChangeForm(e)} className={styles.input_field} name="email" id="email" aria-describedby="emailHelp" placeholder="Email" /></td>
+                            </tr>
+                            <tr>
+                                <td className={styles.table_label}><label htmlFor="exampleInputEmail1">Password</label></td>
+                                <td className={styles.table_entry}><input type="text" onChange={(e) => onChangeForm(e)} className={styles.input_field} name="password" id="password" aria-describedby="emailHelp" placeholder="Password" /></td>
                             </tr>
                         </table>
                         <div className={styles.button_format}>

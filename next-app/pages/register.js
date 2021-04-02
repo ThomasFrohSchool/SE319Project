@@ -43,6 +43,8 @@ class Register extends Component {
           user.lastName = e.target.value;
       } else if (e.target.name === 'email') {
           user.email = e.target.value;
+      } else if (e.target.name === 'username'){
+          user.username = e.target.value;
       }
       this.setState({user})
   }
