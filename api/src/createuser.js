@@ -4,7 +4,7 @@ var mysql = require('mysql');
 //new root user password = comsVM@319
 function newUser(username, first, last, email, password){
     var con = mysql.createConnection({
-        host:"localhost",
+        host:"coms-319-g10.cs.iastate.edu",
         user: "root",
         password: "07aaa7b7ad12ca54",
         database: "mydb"
@@ -49,4 +49,6 @@ function newUser(username, first, last, email, password){
         console.log("User inserted");
         });
     });
+
+    module.exports = {newUser};
 }
