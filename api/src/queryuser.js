@@ -9,11 +9,11 @@ var con = mysql.createConnection({
     password: "07aaa7b7ad12ca54",
     database: "mydb"
 });
-var loginUserName = 'czook';
-var sql = 'SELECT user FROM users\n' +
-'WHERE user = \'' + loginUserName + '\';';
+var loginUserName = 'zDoda';
+var sql = 'SELECT * FROM users\n' +
+'WHERE uname = \'' + loginUserName + '\';';
 
-connection.query(sql, (error, results, fields) => {
+con.query(sql, (error, results, fields) => {
   if (error) {
     return console.error(error.message);
   }
@@ -22,4 +22,4 @@ connection.query(sql, (error, results, fields) => {
   console.log(details.uname + " " + details.password);
 });
 
-connection.end(); 
+con.end(); 
