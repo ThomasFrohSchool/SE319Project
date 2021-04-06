@@ -19,7 +19,8 @@ con.query(sql, (error, results, fields) => {
   }
   var details = results;
 
-  console.log(details.uname + " " + details.password);
+  console.log(details[0].uname + " " + details[0].password);
+  console.log(results);
 });
 
 con.end(); 
