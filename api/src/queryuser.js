@@ -17,7 +17,9 @@ connection.query(sql, (error, results, fields) => {
   if (error) {
     return console.error(error.message);
   }
-  console.log(results);
+  var details = results;
+
+  console.log(details.uname + " " + details.password);
 });
 
 connection.end(); 
