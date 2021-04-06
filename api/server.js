@@ -18,6 +18,8 @@ app.post('/api/user', (req, res) => {
     const user = req.body.user;
     console.log('Adding user:::::::', user);
     users.push(user);
+    var sql = require('./src/createuser');
+    sql.newUser(user.username, user.first, user.last, user.email, user.password);
     res.json("user added");
 });
 
