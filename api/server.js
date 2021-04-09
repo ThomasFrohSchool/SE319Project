@@ -41,17 +41,12 @@ app.post('/api/login', (req, res) => {
       }
       console.log("Results: " + results);
       //details = results;
-
-      fart(results);
     
       console.log(details[0].uname + " " + details[0].password);
+      res.json(results);
     });
-    function fart(value) {
-        details = value;
-    }
     console.log(details);
     con.end();
-    res.json(details);
 });
 
 app.post('/api/register', (req, res) => {
