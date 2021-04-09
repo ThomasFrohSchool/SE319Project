@@ -80,6 +80,14 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../next-app/out/index.html'));
 });
 
+app.get('/user/*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../next-app/out/user/[user].html'));
+});
+
+app.get('/api/users/*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'src/api/[user].js'));
+});
+
 app.listen(port, () => {
     console.log('Server listening on the port::${port}');
 });

@@ -1,19 +1,8 @@
-export async function getAllUsers() {
-    const response = await fetch('/api/users');
-    return await response.json();
-}
+import { useCookies, Cookies } from "react-cookie"
+import { queryUser } from "../../../../api/src/queryuser"
 
-export async function createUser(data) {
-    const response = await fetch('/api/user', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({user: data})
-    })
-    return await response.json();
-}
-/*
 var mysql = require('mysql');
-    
+
 var con = mysql.createConnection({
     host:"coms-319-g10.cs.iastate.edu",
     user: "root",
@@ -21,9 +10,14 @@ var con = mysql.createConnection({
     database: "mydb"
 });
 
-export function getUserData(user) {
+function getNameFromCookie(cname) {
+    const cookies = new Cookies();
+    return cookies.get(cname);  
+}
+
+export default function handler(req, res) {
     var query;
-    con.query('SELECT * FROM users\n' + 'WHERE uname = \'' + user + '\';', (error, results, fields) => {
+    con.query('SELECT * FROM users\n' + 'WHERE uname = \'' + getNameFromCookie("user") + '\';', (error, results, fields) => {
         if (error) {
             return console.error(error.message);
         }
@@ -40,6 +34,6 @@ export function getUserData(user) {
             }
         }
     });
-    return query;
+    console.log("1 " + query)
+    res.response(200).json(query);
 }
-*/

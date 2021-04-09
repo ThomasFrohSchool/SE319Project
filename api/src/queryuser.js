@@ -28,10 +28,7 @@ export function getAllUsers() {
     if (error) {
       return console.error(error.message);
     }
-    console.log(results);
-    return results;
     return results.map(result => {
-      console.log(result)
       return {
         params: {
           user: result
