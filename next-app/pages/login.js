@@ -13,11 +13,9 @@ function tryLogin(username, password) {
         pword: password,
     }
 
-    login = (e) => {
-        loginUser(user).then(response => {
-            console.log(response);
-        });
-    }
+    loginUser(user).then(response => {
+         console.log(response);
+     });
 }
 
 function getNameFromCookie(cname) {
@@ -33,18 +31,22 @@ export default function Login() {
 
     var uname = "";
     var pword = "";
+    var data = "";
 
     const handleSignIn = async () => {
         try {
-          const response = await tryLogin(uname, pword) //handle API call to sign in here.
-          const data = response.data
+          const response = tryLogin(uname, pword); //handle API call to sign in here.
+          data = response.data.body;
+          console.log(data);
     
-          setCookie("user", uname, {
-            path: "/",
-            maxAge: 5, // 600 = Expires after 10 min
-            sameSite: true,
-          })
-          console.log("Cookie set");
+          if(data != null) {
+            setCookie("user", uname, {
+                path: "/",
+                maxAge: 5, // 600 = Expires after 10 min
+                sameSite: true,
+              })
+              console.log("Cookie set");
+          }
         } catch (err) {
           console.log(err)
         }
@@ -82,10 +84,9 @@ export default function Login() {
                             </table>
                             <div className={styles.button_format}>
                                 <Link href="/register"><a><input type="button" value="Register"  className={styles.login_button}/></a></Link>
-                                <input type="submit" value="Login"  className={styles.login_button} onClick={handleSignIn}/>
+                                <input type="button" value="Login"  className={styles.login_button} onClick={handleSignIn}/>
                             </div>
                         </form>
-                        
                     </fieldset>
                 </div>
             </main>

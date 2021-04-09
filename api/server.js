@@ -18,9 +18,10 @@ app.get('/api/users', (req, res) => {
 
 app.post('/api/login', (req, res) => {
     var j = JSON.stringify(req.body);
-    console.log(j);
+    //console.log(j);
     const user = JSON.parse(j);
     console.log('api/login called');
+    console.log('Attempting to login', user);
 
     var con = mysql.createConnection({
         host:"coms-319-g10.cs.iastate.edu",
@@ -29,7 +30,7 @@ app.post('/api/login', (req, res) => {
         database: "mydb"
     });
     var loginUserName = user.user.uname;
-    var loginPassword = user.password;
+    var loginPassword = user.user.pword;
     var sql = 'SELECT * FROM users\n' +
     'WHERE uname = \'' + loginUserName + '\';';
     
@@ -40,10 +41,11 @@ app.post('/api/login', (req, res) => {
       var details = results;
     
       console.log(details[0].uname + " " + details[0].password);
-      console.log(results);
+      //console.log(results);
     });
     
     con.end(); 
+    res.json(user);
 });
 
 app.post('/api/register', (req, res) => {
