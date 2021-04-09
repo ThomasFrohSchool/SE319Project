@@ -40,13 +40,13 @@ app.post('/api/login', (req, res) => {
         return console.error(error.message);
       }
       console.log("Results: " + results);
-      //details = results;
+      details = results;
     
       console.log(details[0].uname + " " + details[0].password);
-      res.json(results);
     });
     console.log(details);
     con.end();
+    res.json(details);
 });
 
 app.post('/api/register', (req, res) => {
