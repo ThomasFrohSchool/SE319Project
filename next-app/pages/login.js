@@ -6,7 +6,6 @@ import { useCookies, Cookies } from "react-cookie"
 import NavBar from "../components/NavBar"
 import Router from "next/router"
 import { loginUser } from "../services/UserService"
-import { response } from "express"
 
 function tryLogin(username, password) {
     const user = {
@@ -42,7 +41,7 @@ export default function Login() {
     
           setCookie("user", uname, {
             path: "/",
-            maxAge: 600, // Expires after 10 min
+            maxAge: 5, // 600 = Expires after 10 min
             sameSite: true,
           })
           console.log("Cookie set");

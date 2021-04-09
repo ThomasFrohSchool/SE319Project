@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const mysql = require("mysql");
-const createuser = require("./src/createuser");
+//const createuser = require("./src/createuser");
 const app = express(),
     //bodyParser = require("body-parser");
     port = 3080;
