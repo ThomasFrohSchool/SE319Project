@@ -1,19 +1,7 @@
-export async function getAllUsers() {
-    const response = await fetch('/api/users');
-    return await response.json();
-}
+import { queryUser } from '../../../../api/src/queryuser'
 
-export async function createUser(data) {
-    const response = await fetch('/api/user', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({user: data})
-    })
-    return await response.json();
-}
-/*
 var mysql = require('mysql');
-    
+
 var con = mysql.createConnection({
     host:"coms-319-g10.cs.iastate.edu",
     user: "root",
@@ -21,9 +9,9 @@ var con = mysql.createConnection({
     database: "mydb"
 });
 
-export function getUserData(user) {
+export default function userHandler(req, res) {
     var query;
-    con.query('SELECT * FROM users\n' + 'WHERE uname = \'' + user + '\';', (error, results, fields) => {
+    con.query('SELECT * FROM users\n' + 'WHERE uname = \'' + req.query + '\';', (error, results, fields) => {
         if (error) {
             return console.error(error.message);
         }
@@ -40,6 +28,12 @@ export function getUserData(user) {
             }
         }
     });
-    return query;
+
+    console.log("Query: " + query)
+    if (query.length > 0) {
+        res.status(200).json(query)
+    }
+    else {
+        res.status(404).json({ message: 'User, ${id}, could not be found' })
+    }
 }
-*/

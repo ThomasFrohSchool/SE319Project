@@ -23,4 +23,40 @@ con.query(sql, (error, results, fields) => {
   console.log(results);
 });
 
-con.end(); 
+export function getAllUsers() {
+  con.query('SELECT * FROM users;', (error, results, fields) => {
+    if (error) {
+      return console.error(error.message);
+    }
+    return results.map(result => {
+      return {
+        params: {
+          user: result
+        }
+      }
+    });
+  });
+}
+
+export function queryUser(user) {
+  con.query('SELECT * FROM users\n' +
+  'WHERE uname = \'' + user + '\';', (error, results, fields) => {
+    if (error) {
+      return console.error(error.message);
+    }
+    var details = results;
+    for (const result in details) {
+      if (result.uname == user) {
+        return {
+          user,
+          userData: {
+            username: result.uname,
+            passowrd: result.password
+          }
+        }
+      }
+    }
+  });
+}
+
+con.end();

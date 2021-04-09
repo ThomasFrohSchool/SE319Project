@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import NavBar from '../components/NavBar'
+import Link from 'next/link'
 
 export default function Home() {
     return (
@@ -25,10 +26,10 @@ export default function Home() {
 
 
                     <div className={styles.grid}>
-                        <a href="https://nextjs.org/docs" className={styles.card}>
+                        <Link href="/user/null"><a className={styles.card}>
                             <h3>Profile &rarr;</h3>
                             <p>Cick here to access your profile information.</p>
-                        </a>
+                        </a></Link>
 
                         <a href="https://nextjs.org/learn" className={styles.card}>
                             <h3>Chess &rarr;</h3>
