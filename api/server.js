@@ -16,7 +16,37 @@ app.get('/api/users', (req, res) => {
     res.json(users);
 });
 
-app.post('/api/user', (req, res) => {
+app.post('/api/login', (req, res) => {
+    var j = JSON.stringify(req.body);
+    console.log(j);
+    const user = JSON.parse(j);
+    console.log('api/login called');
+
+    var con = mysql.createConnection({
+        host:"coms-319-g10.cs.iastate.edu",
+        user: "root",
+        password: "07aaa7b7ad12ca54",
+        database: "mydb"
+    });
+    var loginUserName = user.user.uname;
+    var loginPassword = user.password;
+    var sql = 'SELECT * FROM users\n' +
+    'WHERE uname = \'' + loginUserName + '\';';
+    
+    con.query(sql, (error, results, fields) => {
+      if (error) {
+        return console.error(error.message);
+      }
+      var details = results;
+    
+      console.log(details[0].uname + " " + details[0].password);
+      console.log(results);
+    });
+    
+    con.end(); 
+});
+
+app.post('/api/register', (req, res) => {
     var j = JSON.stringify(req.body);
     //console.log(j);
     const user = JSON.parse(j);
@@ -71,8 +101,8 @@ app.post('/api/user', (req, res) => {
         });
     });
     users.push(user);
-    var sql = require('./src/createuser');
-    sql.newUser(user.username, user.first, user.last, user.email, user.password);
+    //var sql = require('./src/createuser');
+    //sql.newUser(user.username, user.first, user.last, user.email, user.password);
     res.json("user added");
 });
 

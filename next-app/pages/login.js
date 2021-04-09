@@ -5,9 +5,20 @@ import React, { useEffect } from 'react'
 import { useCookies, Cookies } from "react-cookie"
 import NavBar from "../components/NavBar"
 import Router from "next/router"
+import { loginUser } from "../services/UserService"
+import { response } from "express"
 
 function tryLogin(username, password) {
+    const user = {
+        uname: username,
+        pword: password,
+    }
 
+    login = (e) => {
+        loginUser(user).then(response => {
+            console.log(response);
+        });
+    }
 }
 
 function getNameFromCookie(cname) {
@@ -26,8 +37,8 @@ export default function Login() {
 
     const handleSignIn = async () => {
         try {
-          //const response = await tryLogin(uname, pword) //handle API call to sign in here.
-          //const data = response.data
+          const response = await tryLogin(uname, pword) //handle API call to sign in here.
+          const data = response.data
     
           setCookie("user", uname, {
             path: "/",
@@ -66,7 +77,7 @@ export default function Login() {
                                     </tr>
                                     <tr>
                                         <td className={styles.table_label}><label htmlFor="pword">Password</label></td>
-                                        <td className={styles.table_entry}><input type="password" name="pword" className={styles.input_field} onChange={event => pword = event.target.value}/></td>
+                                        <td className={styles.table_entry}><input type="password" name="pword" className={styles.input_field} id="pword" onChange={event => pword = event.target.value}/></td>
                                     </tr>
                                 </tbody>
                             </table>
