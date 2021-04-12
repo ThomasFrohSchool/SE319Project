@@ -11,9 +11,24 @@ const users = [];
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../next-app/out')));
 
-app.get('/api/users', (req, res) => {
-    console.log('api/users called')
-    res.json(users);
+app.post('/api/users', (req, res) => {
+    console.log("api/users called")
+    var con = mysql.createConnection({
+        host:"coms-319-g10.cs.iastate.edu",
+        user: "root",
+        password: "07aaa7b7ad12ca54",
+        database: "mydb"
+    });
+    var sql = 'SELECT * FROM users';
+    
+    con.query(sql, (error, results, fields) => {
+      if (error) {
+        return console.error(error.message);
+      }
+      var details = results;
+      res.json(details);
+    });
+    con.end()
 });
 
 app.post('/api/login', (req, res) => {
@@ -108,12 +123,51 @@ app.post('/api/register', (req, res) => {
     res.json("user added");
 });
 
+app.post('/api/users/*', (req, res) => {
+    var j = JSON.stringify(req.body);
+    if (j == null || j == {}) return;
+    console.log("body: " + j);
+    const useri = JSON.parse(j);
+    var user = useri['context']['params']['user']
+    user = user.replace(' ' , '')
+    console.log('api/user called');
+    console.log('Attempting to get user info ', user);
+
+    var con = mysql.createConnection({
+        host:"coms-319-g10.cs.iastate.edu",
+        user: "root",
+        password: "07aaa7b7ad12ca54",
+        database: "mydb"
+    });
+    var userName = user;
+    console.log("u: " + userName)
+    var data;
+    var sql = 'SELECT * FROM users\n' +
+    'WHERE uname = \'' + userName + '\';';
+    
+    con.query(sql, (error, results, fields) => {
+      if (error) {
+        return console.error(error.message);
+      }
+      var details = results;
+      data = results[0];
+      if (details[0] != null && details[0] !== undefined) {
+        console.log("Result: " + details[0].password);
+      }
+      
+      res.json(data);
+    });
+    console.log('D: ' + data);
+    con.end();
+});
+
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../next-app/out/index.html'));
 });
 
 app.get('/user/*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../next-app/out/user/[user].html'));
+    var user = req.params['0']
+    res.sendFile(path.join(__dirname, '../next-app/out/user/' + user + '.html'));
 });
 
 app.get('/api/users/*', (req, res) => {

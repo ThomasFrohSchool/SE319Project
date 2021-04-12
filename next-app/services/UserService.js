@@ -20,3 +20,12 @@ export async function loginUser(data) {
     })
     return await response.json();
 }
+
+ export async function getUserData(user) {
+     const response = await fetch('/api/users/' + user, {
+         method: 'POST',
+         headers: {'Content-Type': 'application/json'},
+         body: JSON.stringify({user})
+     })
+     return await response.json();
+ }
