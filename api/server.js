@@ -32,6 +32,7 @@ app.post('/api/users', (req, res) => {
 });
 
 app.post('/api/login', (req, res) => {
+    var details = {};
     var j = JSON.stringify(req.body);
     //console.log(j);
     const user = JSON.parse(j);
@@ -53,14 +54,14 @@ app.post('/api/login', (req, res) => {
       if (error) {
         return console.error(error.message);
       }
-      var details = results;
+      console.log("Results: " + results);
+      details = results;
     
       console.log(details[0].uname + " " + details[0].password);
-      //console.log(results);
     });
-    
-    con.end(); 
-    res.json(user);
+    console.log(details);
+    con.end();
+    res.json(details);
 });
 
 app.post('/api/register', (req, res) => {

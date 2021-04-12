@@ -14,7 +14,8 @@ function tryLogin(username, password) {
     }
 
     loginUser(user).then(response => {
-         console.log(response);
+         //console.log(response);
+         return response;
      });
 }
 
@@ -31,7 +32,7 @@ export default function Login() {
 
     var uname = "";
     var pword = "";
-    var data = "";
+    var data;
 
     const handleSignIn = async () => {
         try {
