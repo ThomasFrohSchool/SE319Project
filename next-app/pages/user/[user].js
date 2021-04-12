@@ -1,69 +1,106 @@
 import { useRouter } from 'next/router'
-import useSWR from 'swr'
-import { getUserData } from '../../services/UserService'
+import Head from 'next/head'
+import styles from '../../styles/user_styles.module.css'
 
 export default function User({ udata }) {
     const { query } = useRouter()
     if (query.user == undefined) return <></>;
-    /*const { query } = useRouter()
-    console.log(query.user);
-    const { data, error } = useSWR(
-        () => query.user && ('/api/users/' + query.user),
-        fetcher
-    )
 
-    console.log("Data:" + data);
-    if (error) return <div>Error: {error.message}</div>
-    if (!data) return <div>Loading...</div>
-        */
+    var firstName = udata.first
+    var lastName = udata.last
+    var userName = udata.uname
+    var pic = udata.profilepic + '.jpg'
+    var dateJoined = udata.datemade
+    dateJoined = dateJoined.substring(0, 10)
 
-    var resp;
-    console.log("Q: " + query.user)
-    /*
-    getUserData(query.user).then(response => {
-        resp = JSON.parse(JSON.stringify(response));
-        if (resp == undefined || resp[0] == undefined) return;
-        for (const el in resp[0]) {
-            console.log(el);
-        }
-        console.log("Re:" + resp[0].uname)
-        var listelems;
+    var dateObjects = dateJoined.split('-')
+    var month;
+    var day = dateObjects[2];
+    if (day[day.length - 1] == 1) {
+        day+='st'
+    }
+    else if (day[day.length - 1] == 2) {
+        day+='nd'
+    }
+    else if (day[day.length - 1] == 3) {
+        day+='rd'
+    }
+    else {
+        day+='th'
+    }
+    var year = dateObjects[0];
+    switch (dateObjects[1]) {
+        case '01':
+            month = 'January';
+            break;
+        case '02':
+            month = 'February';
+            break;
+        case '03':
+            month = 'March';
+            break;
+        case '04':
+            month = 'April';
+            break;
+        case '05':
+            month = 'May';
+            break;
+        case '06':
+            month = 'June';
+            break;
+        case '07':
+            month = 'July';
+            break;
+        case '08':
+            month = 'August';
+            break;
+        case '09':
+            month = 'September';
+            break;
+        case '10':
+            month = 'October';
+            break;
+        case '11':
+            month = 'November';
+            break;
+        case '12':
+            month = 'December';
+            break;
+        default:
+            month = 'January';
+            break;
+    }
+    var buildDate = month + " " + day + ", " + year
 
-        for (const udata in resp[0]) {
-            listelems += <li>Data: {udata}</li>
-        }
+    if (pic == '.jpg' || pic == 'null.jpg') {
+        pic = 'default.jpg'
+    }
 
-        return (
-            <>
-                <ul>
-                    {listelems}
-                </ul>
-            </>
-        )
-    })
-*/
-    
-    console.log("Got Here!")
-
-    var data = JSON.parse(JSON.stringify(udata))
-
-    console.log(data)
-
-    const listelems = Object.values(udata).map(val => {
-        return <li key={val}>{val}</li>
-    });
-
-    Object.values(udata).map(val => {
-        console.log(val)
-    })
-
-    console.log(listelems)
+    var picSrc = '/profile_pics/' + pic
 
     return (
         <>
-            <ul>
-                {listelems}
-            </ul>
+            <Head>
+                <title>User | {userName}</title>
+                <link rel="icon" href="/logo.png" />
+            </Head>
+            <main className={styles.main}>
+                <div className={styles.body}>
+                    <div className={styles.header}>
+                        <img src={picSrc} height="100%" className={styles.profile_pic}/>
+                        <h3 className={styles.headerName}>{userName}</h3>
+                    </div>
+                    <div className={styles.divider}></div>
+                    <div className={styles.userInfo}>
+                        <p className={styles.info} id="name">Name: {firstName} {lastName}</p>
+                        <p className={styles.info} id="date">Member Since: {buildDate}</p>
+                    </div>
+                    <div className={styles.divider}></div>
+                    <div className={styles.statInfo}>
+                        <h2 className={styles.stats_header}>Stats</h2>
+                    </div>
+                </div>
+            </main>
         </>
     )
     

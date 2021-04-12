@@ -127,12 +127,9 @@ app.post('/api/register', (req, res) => {
 app.post('/api/users/*', (req, res) => {
     var j = JSON.stringify(req.body);
     if (j == null || j == {}) return;
-    console.log("body: " + j);
     const useri = JSON.parse(j);
     var user = useri['context']['params']['user']
     user = user.replace(' ' , '')
-    console.log('api/user called');
-    console.log('Attempting to get user info ', user);
 
     var con = mysql.createConnection({
         host:"coms-319-g10.cs.iastate.edu",
@@ -141,7 +138,6 @@ app.post('/api/users/*', (req, res) => {
         database: "mydb"
     });
     var userName = user;
-    console.log("u: " + userName)
     var data;
     var sql = 'SELECT * FROM users\n' +
     'WHERE uname = \'' + userName + '\';';
@@ -150,15 +146,10 @@ app.post('/api/users/*', (req, res) => {
       if (error) {
         return console.error(error.message);
       }
-      var details = results;
       data = results[0];
-      if (details[0] != null && details[0] !== undefined) {
-        console.log("Result: " + details[0].password);
-      }
       
       res.json(data);
     });
-    console.log('D: ' + data);
     con.end();
 });
 
