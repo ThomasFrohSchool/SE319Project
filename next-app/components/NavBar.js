@@ -19,6 +19,7 @@ export default function NavBar() {
           <div className={styles.button_bar}>
             <Link href="/login"><input type="submit" value="Login"  className={styles.button}/></Link>
             <Link href="/register"><a><input type="button" value="Register" className={styles.button}/></a></Link>
+            <Link href="/"><input type="button" value="Home"  className={styles.button}/></Link>
           </div>
         </div>
       </>

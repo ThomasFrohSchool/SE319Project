@@ -32,7 +32,7 @@ app.post('/api/users', (req, res) => {
 });
 
 app.post('/api/login', (req, res) => {
-    var details = {};
+    var details;
     var j = JSON.stringify(req.body);
     //console.log(j);
     const user = JSON.parse(j);
@@ -54,14 +54,19 @@ app.post('/api/login', (req, res) => {
       if (error) {
         return console.error(error.message);
       }
-      console.log("Results: " + results);
-      details = results;
-    
-      console.log(details[0].uname + " " + details[0].password);
+      console.log(results);
+      details = results[0];
+      if(details.password != loginPassword) {
+          res.json(null);
+          console.log("Password does not match");
+      }
+      else {
+        console.log(details.uname + " " + details.password);
+        res.json(details);
+      }
     });
-    console.log(details);
+    //console.log("Details: " + details);
     con.end();
-    res.json(details);
 });
 
 app.post('/api/register', (req, res) => {
