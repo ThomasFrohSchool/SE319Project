@@ -162,6 +162,14 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../next-app/out/index.html'));
 });
 
+app.get('/register', (req, res) => {
+    res.sendFile(path.join(__dirname, '../next-app/out/register.html'));
+});
+
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, '../next-app/out/login.html'));
+});
+
 app.get('/user/*', (req, res) => {
     var user = req.params['0']
     res.sendFile(path.join(__dirname, '../next-app/out/user/' + user + '.html'));

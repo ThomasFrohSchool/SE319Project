@@ -13,9 +13,11 @@ function tryLogin(username, password) {
         pword: password,
     }
 
-    loginUser(user).then(response => {
-         //console.log(response);
-         return response;
+    loginUser(user).then(res => {
+         console.log(res);
+         //res = JSON.stringify(res);
+         //console.log(res);
+         return res;
      });
 }
 
@@ -33,20 +35,24 @@ export default function Login() {
     var uname = "";
     var pword = "";
     var data;
+    var response = undefined;
 
     const handleSignIn = async () => {
         try {
-          const response = tryLogin(uname, pword); //handle API call to sign in here.
-          data = response.data.body;
-          console.log(data);
+          response = tryLogin(uname, pword); //handle API call to sign in here.
+          //data = response;
+          console.log(response);
     
-          if(data != null) {
+          if(response != null) {
             setCookie("user", uname, {
                 path: "/",
                 maxAge: 5, // 600 = Expires after 10 min
                 sameSite: true,
               })
               console.log("Cookie set");
+          }
+          else {
+              alert("Login failed!");
           }
         } catch (err) {
           console.log(err)

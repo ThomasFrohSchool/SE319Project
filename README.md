@@ -4,6 +4,12 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 First, run the development server:
 
+npm install in both api and next-app folders,
+then navigate to the frontend (next-app) folder and run npm run build,
+then navigate to the backend (api) folder and run npm run dev
+
+then you can go to the website at http://localhost:3080
+
 ```bash
 navigate to the api folder and run in terminal: npm run dev
 # or
