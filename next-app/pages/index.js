@@ -1,8 +1,20 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import NavBar from '../components/NavBar'
+import { Cookies } from "react-cookie"
+import Link from 'next/link'
 
 export default function Home() {
+
+    var profile_href = "/login";
+    const cookies = new Cookies();
+    const user_cookie = cookies.get('user')
+    if (user_cookie != null) {
+        profile_href = "/user/" + user_cookie;
+    }
+    
+    console.log(profile_href)
+
     return (
         <body style={{ background: '#4d1d91' }}>
             <div className={styles.container}>
@@ -25,10 +37,10 @@ export default function Home() {
 
 
                     <div className={styles.grid}>
-                        <a href="https://nextjs.org/docs" className={styles.card}>
+                        <Link href={profile_href}><a className={styles.card}>
                             <h3>Profile &rarr;</h3>
                             <p>Cick here to access your profile information.</p>
-                        </a>
+                        </a></Link>
 
                         <a href="https://nextjs.org/learn" className={styles.card}>
                             <h3>Chess &rarr;</h3>

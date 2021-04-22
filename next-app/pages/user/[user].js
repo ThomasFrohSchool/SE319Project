@@ -136,6 +136,7 @@ export async function getStaticProps(context) {
     const udata = await res.json()
 
     return {
+      revalidate: 5,
       props: {
         udata,
       },
