@@ -9,11 +9,27 @@ import { getAllUsers, createUser } from '../services/UserService'
 import styles from "../styles/login_styles.module.css"
 import NavBar from "../components/NavBar"
 import Router from "next/router"
-import {Cookies} from "react-cookie"
+import { useCookies, Cookies } from "react-cookie"
 
 /**
  * WILL UPDATE. THIS IS CURRENTLY ONLY REACT, BUT WE WANT TO CHANGE THIS TO NEXT.JS
  */
+
+function setUserCookie(user) {
+  const cookies = new Cookies();
+  /*setCookie("user", user, {
+    path: "/",
+    maxAge: -1, // 600 = Expires after 10 min
+    sameSite: true,
+  });*/
+  let d = new Date();
+  d.setTime(d.getTime() + 5000);
+  cookies.set("user", user, { path: '/'});
+  console.log(cookies.get("user"));
+  console.log("Cookie set");
+  Router.push("/");
+}
+
 class Register extends Component {
 
   state = {
@@ -23,10 +39,12 @@ class Register extends Component {
   }
 
   createUser = (e) => {
+    let user;
       createUser(this.state.user)
         .then(response => {
-          console.log(response);
-          this.setState({numberOfUsers: this.state.numberOfUsers + 1})
+          console.log(response.user.username);
+          user = response.user.username;
+          setUserCookie(user);
       });
   }
 

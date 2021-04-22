@@ -56,7 +56,10 @@ app.post('/api/login', (req, res) => {
       }
       console.log(results);
       details = results[0];
-      if(details.password != loginPassword) {
+      if(details == null) {
+        console.log("No user with that username");
+      }
+      else if(details.password != loginPassword) {
           res.json(null);
           console.log("Password does not match");
       }
@@ -126,7 +129,7 @@ app.post('/api/register', (req, res) => {
     users.push(user);
     //var sql = require('./src/createuser');
     //sql.newUser(user.username, user.first, user.last, user.email, user.password);
-    res.json("user added");
+    res.json(user);
 });
 
 app.post('/api/users/*', (req, res) => {

@@ -7,18 +7,21 @@ import NavBar from "../components/NavBar"
 import Router from "next/router"
 import { loginUser } from "../services/UserService"
 
-function tryLogin(username, password) {
+async function tryLogin(username, password) {
+    var hello;
     const user = {
-        uname: username,
-        pword: password,
+      uname: username,
+      pword: password,
     }
 
-    loginUser(user).then(res => {
-         console.log(res);
-         //res = JSON.stringify(res);
-         //console.log(res);
-         return res;
-     });
+    await loginUser(user).then(function(res)  {
+        //console.log(res);
+        //res = JSON.stringify(res);
+        console.log("In function: ");
+        console.log(res);
+        hello = res;
+    });
+    return hello;
 }
 
 function getNameFromCookie(cname) {
@@ -34,31 +37,30 @@ export default function Login() {
 
     var uname = "";
     var pword = "";
-    var data;
-    var response = undefined;
+    var response;
 
     const handleSignIn = async () => {
-        try {
-          response = tryLogin(uname, pword); //handle API call to sign in here.
-          //data = response;
-          console.log(response);
-    
-          if(response != null) {
+        const user = {
+            uname: uname,
+            pword: pword,
+        }
+        response = await tryLogin(uname, pword); //handle API call to sign in here.
+        console.log("In main: ");
+        console.log(response);
+
+        if(response != null) {
             setCookie("user", uname, {
                 path: "/",
-                maxAge: 5, // 600 = Expires after 10 min
+                //maxAge: 600, // 600 = Expires after 10 min
                 sameSite: true,
-              })
-              console.log("Cookie set");
-          }
-          else {
-              alert("Login failed!");
-          }
-        } catch (err) {
-          console.log(err)
+            })
+            console.log("Cookie set");
         }
-      }
-    
+        else {
+            alert("Login failed!");
+        }
+    }
+
     useEffect(() => {
         if (getNameFromCookie("user")) {
             Router.push("/");
