@@ -42,10 +42,10 @@ export default function Home() {
                             <p>Cick here to access your profile information.</p>
                         </a></Link>
 
-                        <a href="https://nextjs.org/learn" className={styles.card}>
+                        <Link href="http://coms-319-g10.cs.iastate.edu:3000/"><a className={styles.card}>
                             <h3>Chess &rarr;</h3>
                             <p>Click here to play chess.</p>
-                        </a>
+                        </a></Link>
 
                         <a
                             href="https://github.com/vercel/next.js/tree/master/examples"
