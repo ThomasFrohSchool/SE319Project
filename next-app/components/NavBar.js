@@ -17,9 +17,9 @@ export default function NavBar() {
       <>
         <div className={styles.bar}>
           <div className={styles.button_bar}>
-            <Link href="/login"><input type="submit" value="Login"  className={styles.button}/></Link>
-            <Link href="/register"><a><input type="button" value="Register" className={styles.button}/></a></Link>
-            <Link href="/"><input type="button" value="Home"  className={styles.button}/></Link>
+            <Link href="/login"><input type="submit" value="Login"  className={styles.button} id="loginButton"/></Link>
+            <Link href="/register"><a><input type="button" value="Register" className={styles.button} id="regButton"/></a></Link>
+            <Link href="/"><input type="button" value="Home"  className={styles.button} id="homeButton"/></Link>
           </div>
         </div>
       </>
@@ -29,7 +29,7 @@ export default function NavBar() {
     pageHeader = (
       <>
         <div className={styles.bar}>
-          <p className={styles.user_text}>Hello, <strong>{user}</strong>!</p>
+          <p className={styles.user_text} id="welcomeTag">Hello, <strong>{user}</strong>!</p>
         </div>
       </>
     );

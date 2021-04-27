@@ -52,7 +52,7 @@ const CreateUser = ({onChangeForm, createUser }) => {
                             </tr>
                         </table>
                         <div className={styles.button_format}>
-                            <button type="button" onClick= {(e) => createUser()} className="btn btn-danger" className={styles.login_button}>Register</button>
+                            <button type="button" onClick= {(e) => createUser()} className="btn btn-danger" className={styles.login_button} id="registerSubmit">Register</button>
                         </div>
                         </form>
                 </form>

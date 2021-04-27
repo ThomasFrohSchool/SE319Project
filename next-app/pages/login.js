@@ -93,7 +93,7 @@ export default function Login() {
                             </table>
                             <div className={styles.button_format}>
                                 <Link href="/register"><a><input type="button" value="Register"  className={styles.login_button}/></a></Link>
-                                <input type="button" value="Login"  className={styles.login_button} onClick={handleSignIn}/>
+                                <input type="button" value="Login"  className={styles.login_button} onClick={handleSignIn} id="loginSubmit"/>
                             </div>
                         </form>
                     </fieldset>
