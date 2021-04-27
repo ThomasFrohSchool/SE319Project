@@ -51,7 +51,7 @@ export default function Login() {
         if(response != null) {
             setCookie("user", uname, {
                 path: "/",
-                //maxAge: 600, // 600 = Expires after 10 min
+                //maxAge: 10, // 600 = Expires after 10 min
                 sameSite: true,
             })
             console.log("Cookie set");
