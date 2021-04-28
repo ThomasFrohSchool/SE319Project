@@ -19,7 +19,7 @@ public class RegisterCheck {
 				path);
 		
 		WebDriver driver = new ChromeDriver();
-		String baseURL = "http://localhost:3080/";
+		String baseURL = "http://coms-319-g10.cs.iastate.edu:3080/";
 		
 		driver.get(baseURL);
 		
