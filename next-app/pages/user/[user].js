@@ -106,7 +106,7 @@ export default function User({ udata }) {
     
 }
 
-export async function getStaticPaths() {
+/*export async function getStaticPaths() {
     const res = await fetch('http://localhost:3080/api/users', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'}
@@ -141,4 +141,4 @@ export async function getStaticProps(context) {
         udata,
       },
     }
-  }
+  }*/
